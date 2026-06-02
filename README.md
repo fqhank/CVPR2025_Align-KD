@@ -43,10 +43,10 @@ Here are some noticings on data issues:
 2. During distillation, it is possible that the "cuda out of memory" error occurs, this is relevant to the environment as well as the data setup. One solution is to remove some variables after use during training, another more efficient solution is to store the inference feature of teacher model on samples whoes length is to long. This requires large storage, so it depends on the resources you have.
 
 ### Citation  
-If you find this work useful, please cite:
-@inproceedings{feng2025alignkd,
-  title     = {Align-KD: Distilling Cross-Modal Alignment Knowledge for Mobile Vision-Language Model},
-  author    = {Feng, Qianhan and Li, Wenshuo and Lin, Tong and Chen, Xinghao},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year      = {2025}
-}
+If you find this work useful, please cite:  
+@inproceedings{feng2025alignkd,  
+  title     = {Align-KD: Distilling Cross-Modal Alignment Knowledge for Mobile Vision-Language Model},  
+  author    = {Feng, Qianhan and Li, Wenshuo and Lin, Tong and Chen, Xinghao},  
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},  
+  year      = {2025}  
+}  
