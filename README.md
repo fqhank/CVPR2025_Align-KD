@@ -2,6 +2,21 @@
 [【CVPR 2025】Align-KD: Distilling Cross-Modal Alignment Knowledge for Mobile Vision-Language Model](https://arxiv.org/abs/2412.01282)  
 Qianhan Feng, Wenshuo Li, Tong Lin, Xinghao Chen* 
 
+
+## Overview
+
+Prior work on knowledge distillation for large models falls into two camps: methods designed for single-modal LLMs, and methods that use the teacher model purely as a data generator for the student. **Neither addresses what actually makes VLMs work — cross-modal alignment.**
+
+We propose **Align-KD**, built on a simple observation: the critical knowledge in a VLM is not just *what* the teacher knows, but *how* it connects vision and language. Align-KD explicitly distills this alignment mechanism by teaching the student:
+
+1. **Cross-modal matching** at shallow layers — where vision and text representations first interact
+2. **Text-guided vision projection** — how to map visual tokens into text embedding space based on textual focus
+
+Under Align-KD, a **1.7B MobileVLM V2** student learns from a **7B teacher** and achieves **+2.0 average improvement across 6 benchmarks** — with a lightweight loss design and no additional data.
+
+> Most distillation methods ask *how much* to compress. Align-KD asks *what* to preserve.
+
+
 ## Abstract
 Vision-Language Models (VLMs) bring powerful understanding and reasoning capabilities to multimodal tasks. Meanwhile, the great need for capable aritificial intelligence on mobile devices also arises, such as the AI assistant software. Some efforts try to migrate VLMs to edge devices to expand their application scope. Simplifying the model structure is a common method, but as the model shrinks, the trade-off between performance and size becomes more and more difficult. Knowledge distillation (KD) can help models improve comprehensive capabilities without increasing size or data volume. However, most of the existing large model distillation techniques only consider applications on single-modal LLMs, or only use teachers to create new data environments for students. None of these methods take into account the distillation of the most important cross-modal alignment knowledge in VLMs. We propose a method called Align-KD to guide the student model to learn the cross-modal matching that occurs at the shallow layer. The teacher also helps student learn the projection of vision token into text embedding space based on the focus of text. Under the guidance of Align-KD, the 1.7B MobileVLM V2 model can learn rich knowledge from the 7B teacher model with light design of training loss, and achieve an average score improvement of 2.0 across 6 benchmarks under two training subsets respectively.
 
@@ -26,3 +41,12 @@ We follow MobileVLM v2 to collect the training data as well as the benchmark. Pl
 Here are some noticings on data issues:  
 1. Some of the datasets are updated from time to time, it is possible that the dataset you obtain is different.
 2. During distillation, it is possible that the "cuda out of memory" error occurs, this is relevant to the environment as well as the data setup. One solution is to remove some variables after use during training, another more efficient solution is to store the inference feature of teacher model on samples whoes length is to long. This requires large storage, so it depends on the resources you have.
+
+### Citation  
+If you find this work useful, please cite:
+@inproceedings{feng2025alignkd,
+  title     = {Align-KD: Distilling Cross-Modal Alignment Knowledge for Mobile Vision-Language Model},
+  author    = {Feng, Qianhan and Li, Wenshuo and Lin, Tong and Chen, Xinghao},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2025}
+}
